@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React CDN</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!--cargando react para produccion-->
+    <!-- <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+    ></script> -->
+    <!--react para produccion cargado-->
+
+    <!--agregando react para desarrollo-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <!--react para desarrollo cargado-->
+
+    <!--cargando babel-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!--babel cargado-->
+  </head>
+
+  <body>
+    <h1>Aplicando React desde CDN</h1>
+
+    <button id="react">react</button>
+    <button id="babel">babel</button>
+
+    <!--divs para imprimir componentes-->
+    <div id="root"></div>
+
+    <div id="paraSaludos"></div>
+
+    <div id="vanguar"></div>
+
+    <!--creando componente de la forma "moderna"-->
+    <script type="text/babel">
+      const Saludito = () => {
+        return <h2> Creando elemento vanguardista</h2>;
+      };
+      ReactDOM.render(
+        <Saludito></Saludito>,
+        document.querySelector("#vanguar")
+      );
+    </script>
+
+    <!--creando un componene a la manera "antigua"-->
+    <script type="text/babel">
+      class Saludo extends React.Component {
+        render() {
+          return <h2>asd</h2>;
+        }
+      }
+      ReactDOM.render(
+        <Saludo></Saludo>,
+        document.querySelector("#paraSaludos")
+      );
+    </script>
+
+    <!--creacion de elemento con babel-->
+    <script type="text/babel">
+      ReactDOM.render(
+        <div>
+          <h2> creando la lista con babel</h2>
+          <ul>
+            <li> Anakin </li>
+            <li> Obi-wan </li>
+            <li> Padme </li>
+            <li> Mace Windu </li>
+            <ol>
+              <li>Iron Man</li>
+              <li>Cap</li>
+              <li>Thor</li>
+            </ol>
+          </ul>
+        </div>,
+        document.querySelector("#root")
+      );
+    </script>
+
+    <!--interpolando variables-->
+    <br />
+    <div id="inter"></div>
+
+    <script type="text/babel">
+      const name = prompt("introduce tu nombre");
+      const Interpolar = () => {
+        return (
+          <div>
+            <h3>Interpolando variables like a pro</h3>
+            <h2>Welcome {name}</h2>
+            <hr />
+          </div>
+        );
+      };
+      ReactDOM.render(<Interpolar />, document.querySelector("#inter"));
+    </script>
+
+    <p>Ahora se va a intentar insertar elmeento con estado</p>
+    <p>
+      Un state controlado por el programador, aunque se considere "mala
+      practica"
+    </p>
+
+    <div id="paraStates"></div>
+
+    <script type="text/babel">
+      const Fecha = () => {
+        const [numero, setNumero] = React.useState(0);
+        setTimeout(() => {
+          setNumero(numero + 15);
+        }, 1000);
+        return <h3>El numero es: {numero}</h3>;
+      };
+      ReactDOM.render(<Fecha></Fecha>, document.querySelector("#paraStates"));
+    </script>
+
+    <script src="app.js"></script>
+  </body>
+</html>
