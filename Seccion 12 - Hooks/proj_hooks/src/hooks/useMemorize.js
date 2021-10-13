@@ -3,7 +3,7 @@ import { useState, useMemo, useCallback } from 'react'
 
 export const useMemorize = () => {
     //estado contador
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(100);
     //estado independiente
     const [fondo, setFondo] = useState(true);
 
@@ -17,7 +17,7 @@ export const useMemorize = () => {
     //Funcion para explicar useMemo
     const procesar = (limite) => {
         for (let i = 0; i < limite; i++) {
-            console.log(`numero: ${i}`);
+            console.log(`numero:`);
         }
         return `finalizó el proceso luego de ${limite} veces`;
     };
@@ -30,6 +30,9 @@ export const useMemorize = () => {
         setCounter((actual_value) => actual_value + 1);
     }, [setCounter]);
 
+    //usecallback
+    const alternar = useCallback(() => { setFondo(!fondo) }, [fondo])
 
-    return [counter, fondo, memorizar, add, handleFondo, setFondo];
+
+    return [counter, memorizar, add, handleFondo, alternar];
 }

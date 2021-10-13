@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+//import React from "react";
 import Callback from "./Callback";
 import Dato from "./Dato";
 import { useMemorize } from "../../hooks/useMemorize";
 
 const Memo = () => {
-  const [counter, fondo, memorizar, add, handleFondo, setFondo] = useMemorize();
+  const [counter, memorizar, add, handleFondo, alternar] = useMemorize();
 
   return (
     <>
@@ -17,14 +17,14 @@ const Memo = () => {
       <br />
       <Callback funcion={add}></Callback>
       <br />
-
+      {memorizar}
       <br />
 
       <br />
       <button
         onClick={() => {
+          alternar();
           handleFondo();
-          setFondo(!fondo);
         }}
       >
         State independiente <br />
