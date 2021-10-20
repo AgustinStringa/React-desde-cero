@@ -1,27 +1,26 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const Card = ({ obj }) => {
-  if (obj != null) {
-    console.log(obj);
-    const { id } = obj;
-    //destructurando dentro del objeto
-    const {
-      urls: { regular, small },
-    } = obj;
-
-    const {
-      location: { title },
-    } = obj;
-
-    return (
-      <div>
-        <p>{title}</p>
-        <img src={small} alt={id} />
+const Card = ({ src, alt }) => {
+  return (
+    <div className="card" style={{ width: "18rem" }}>
+      <img src={src} className="card-img-top" alt={alt} />
+      <div className="card-body">
+        <h5 className="card-title">Card title</h5>
+        <p className="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" className="btn btn-primary">
+          Go somewhere
+        </a>
       </div>
-    );
-  } else {
-    return <p>Esperando por la peticion</p>;
-  }
+    </div>
+  );
+};
+
+Card.propTypes = {
+  img: PropTypes.string,
 };
 
 export default Card;
